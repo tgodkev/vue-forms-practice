@@ -46,6 +46,9 @@
         <input id="how-other" name="how" type="radio" v-model='how' value='other'  />
         <label for="how-other">Other</label>
       </div>
+      <div class='form-control'>
+          <rating-control v-model='rating' ></rating-control>
+      </div>
     </div>
     <div>
       <button>Save Data</button>
@@ -54,7 +57,14 @@
 </template>
 
 <script>
+import RatingControl from '@/components/RatingControl';
+
 export default {
+
+  components: {
+    RatingControl,
+  },
+
   data(){
     return{
       userName: '',
@@ -63,6 +73,7 @@ export default {
       interest: [],
       how: null,
       userNameValid: 'pending',
+      rating: null,
     }
   },
   methods: {
@@ -77,6 +88,8 @@ export default {
       console.log(this.how);
       this.how = null;
       this.interest = [];
+      console.log(this.rating);
+      this.rating = null;
     },
     validateInput(){
         if (this.userName.trim() === ''){
